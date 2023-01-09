@@ -5,6 +5,7 @@ CREATE TABLE railway.`work` (
 	job varchar(255) NULL,
 	startdate DATE NULL,
 	enddate DATE NULL,
+	id_picture CHAR(36) NOT NULL,
 	CONSTRAINT work_PK PRIMARY KEY (id),
 	CONSTRAINT work_FK FOREIGN KEY (id_user) REFERENCES railway.users(id)
 )

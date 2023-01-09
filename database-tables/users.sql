@@ -7,8 +7,11 @@ CREATE TABLE railway.users (
 	about TEXT NULL,
 	dob DATE NULL,
 	city varchar(50) NULL,
-	picture varchar(255) NULL,
-	CONSTRAINT users_PK PRIMARY KEY (id)
+	id_profile_picture CHAR(36) NOT NULL,
+	id_banner_picture CHAR(36) NOT NULL,
+	CONSTRAINT users_PK PRIMARY KEY (id),
+	CONSTRAINT users_profile_FK FOREIGN KEY (id_profile_picture) REFERENCES railway.pictures(id),
+	CONSTRAINT users_banner_FK FOREIGN KEY (id_banner_picture) REFERENCES railway.pictures(id)
 )
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4

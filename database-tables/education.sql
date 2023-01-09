@@ -4,6 +4,7 @@ CREATE TABLE railway.education (
 	institution varchar(100) NULL,
 	`degree` varchar(100) NULL,
 	enddate DATE NULL,
+	id_picture CHAR(36) NOT NULL,
 	CONSTRAINT education_PK PRIMARY KEY (id),
 	CONSTRAINT education_FK FOREIGN KEY (id_user) REFERENCES railway.users(id)
 )
