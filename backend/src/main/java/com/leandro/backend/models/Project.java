@@ -1,7 +1,5 @@
 package com.leandro.backend.models;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,25 +14,20 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 
 @Entity
-@Table(name = "users")
+@Table(name = "projects")
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
 @Data
-public class User {
+public class Project {
     
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id", columnDefinition = "CHAR(36)")
     @Id
     private String id;
-    private String firstname;
-    private String lastname;
-    private String email;
-    private String password;
-    private String about;
-    private Date dob;
-    private String city;
-    private String picture;
+    private String idUser;
+    private String name;
+    private String description;
 
 }

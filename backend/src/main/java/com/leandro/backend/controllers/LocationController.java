@@ -3,15 +3,15 @@ package com.leandro.backend.controllers;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.leandro.backend.services.UserService;
+import com.leandro.backend.services.LocationService;
 
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/api")
 @RequiredArgsConstructor
-public class UserController {
+public class LocationController {
 
-    private final UserService userService;
-
+    private final LocationService locationService;
+    
 }

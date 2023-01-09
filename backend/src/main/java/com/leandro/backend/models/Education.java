@@ -16,25 +16,21 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 
 @Entity
-@Table(name = "users")
+@Table(name = "education")
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
 @Data
-public class User {
+public class Education {
     
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "id", columnDefinition = "CHAR(36)")
     @Id
     private String id;
-    private String firstname;
-    private String lastname;
-    private String email;
-    private String password;
-    private String about;
-    private Date dob;
-    private String city;
-    private String picture;
+    private String idUser;
+    private String institution;
+    private String degree;
+    private Date enddate;
 
 }
