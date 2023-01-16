@@ -32,5 +32,6 @@ public class Education {
     private String institution;
     private String degree;
     private Date enddate;
+    private String idPicture;
 
 }

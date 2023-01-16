@@ -29,5 +29,7 @@ public class Project {
     private String idUser;
     private String name;
     private String description;
+    private String linkGithub;
+    private String linkProject;
 
 }

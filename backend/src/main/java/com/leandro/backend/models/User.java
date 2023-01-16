@@ -35,6 +35,7 @@ public class User {
     private String about;
     private Date dob;
     private String city;
-    private String picture;
+    private String idProfilePicture;
+    private String idBannerPicture;
 
 }
