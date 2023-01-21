@@ -12,33 +12,33 @@ import com.leandro.backend.models.Work;
 public interface WorkRepository extends JpaRepository<Work, String> {
     
     @Modifying
-    @Query("update Work w set w.id_user = :id_user where w.id = :id")
-    String updateIdUser(@Param(value = "id") String id,
-                        @Param(value = "id_user") String idUser);
+    @Query("update Work w set w.idUser = :idUser where w.id = :id")
+    void updateIdUser(@Param(value = "id") String id,
+                      @Param(value = "idUser") String idUser);
 
     @Modifying
     @Query("update Work w set w.company = :company where w.id = :id")
-    String updateCompany(@Param(value = "id") String id,
-                         @Param(value = "company") String company);
+    void updateCompany(@Param(value = "id") String id,
+                       @Param(value = "company") String company);
 
     @Modifying
     @Query("update Work w set w.job = :job where w.id = :id")
-    String updateJob(@Param(value = "id") String id,
-                     @Param(value = "job") String job);
+    void updateJob(@Param(value = "id") String id,
+                   @Param(value = "job") String job);
 
     @Modifying
     @Query("update Work w set w.startdate = :startdate where w.id = :id")
-    String updateStartdate(@Param(value = "id") String id,
-                           @Param(value = "startdate") String startdate);
+    void updateStartdate(@Param(value = "id") String id,
+                         @Param(value = "startdate") String startdate);
 
     @Modifying
     @Query("update Work w set w.enddate = :enddate where w.id = :id")
-    String updateEnddate(@Param(value = "id") String id,
-                         @Param(value = "enddate") String enddate);
+    void updateEnddate(@Param(value = "id") String id,
+                       @Param(value = "enddate") String enddate);
 
     @Modifying
-    @Query("update Work w set w.id_picture = :id_picture where w.id = :id")
-    String updateIdPicture(@Param(value = "id") String id,
-                           @Param(value = "id_picture") String idPicture);
+    @Query("update Work w set w.idPicture = :idPicture where w.id = :id")
+    void updateIdPicture(@Param(value = "id") String id,
+                         @Param(value = "idPicture") String idPicture);
 
 }

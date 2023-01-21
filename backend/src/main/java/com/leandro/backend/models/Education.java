@@ -6,6 +6,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -28,10 +31,13 @@ public class Education {
     @Column(name = "id", columnDefinition = "CHAR(36)")
     @Id
     private String id;
-    private String idUser;
+    @ManyToOne
+    @JoinColumn(name = "id_user")
+    private User idUser;
     private String institution;
     private String degree;
     private Date enddate;
-    private String idPicture;
+    @OneToOne(mappedBy = "idEntity")
+    private Picture idPicture;
 
 }

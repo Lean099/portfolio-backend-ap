@@ -12,28 +12,28 @@ import com.leandro.backend.models.Picture;
 public interface PictureRepository extends JpaRepository<Picture, String>{
     
     @Modifying
-    @Query("update Picture p set p.id_user = :id_user where p.id = :id")
-    String updateIdUser(@Param(value = "id") String id,
-                        @Param(value = "id_user") String idUser);
+    @Query("update Picture p set p.idUser = :idUser where p.id = :id")
+    void updateIdUser(@Param(value = "id") String id,
+                      @Param(value = "idUser") String idUser);
 
     @Modifying
-    @Query("update Picture p set p.id_entity = :id_entity where p.id = :id")
-    String updateIdEntity(@Param(value = "id") String id,
-                          @Param(value = "id_entity") String idEntity);
+    @Query("update Picture p set p.idEntity = :idEntity where p.id = :id")
+    void updateIdEntity(@Param(value = "id") String id,
+                        @Param(value = "idEntity") String idEntity);
                           
     @Modifying
-    @Query("update Picture p set p.public_id = :public_id where p.id = :id")
-    String updatePublicId(@Param(value = "id") String id,
-                          @Param(value = "public_id") String publicId);
+    @Query("update Picture p set p.publicId = :publicId where p.id = :id")
+    void updatePublicId(@Param(value = "id") String id,
+                        @Param(value = "publicId") String publicId);
 
     @Modifying
     @Query("update Picture p set p.filename = :filename where p.id = :id")
-    String updateFilename(@Param(value = "id") String id,
-                          @Param(value = "filename") String filename);
+    void updateFilename(@Param(value = "id") String id,
+                        @Param(value = "filename") String filename);
 
     @Modifying
     @Query("update Picture p set p.url = :url where p.id = :id")
-    String updateUrl(@Param(value = "id") String id,
-                     @Param(value = "url") String url);
+    void updateUrl(@Param(value = "id") String id,
+                   @Param(value = "url") String url);
 
 }

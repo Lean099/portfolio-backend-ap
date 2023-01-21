@@ -12,18 +12,18 @@ import com.leandro.backend.models.Skill;
 public interface SkillRepository extends JpaRepository<Skill, String>{
     
     @Modifying
-    @Query("update Skill s set s.id_user = :id_user where s.id = :id")
-    String updateIdUser(@Param(value = "id") String id,
-                        @Param(value = "id_user") String idUser);
+    @Query("update Skill s set s.idUser = :idUser where s.id = :id")
+    void updateIdUser(@Param(value = "id") String id,
+                      @Param(value = "idUser") String idUser);
 
     @Modifying
-    @Query("update Skill s set s.skill_name = :skill_name where s.id = :id")
-    String updateSkillName(@Param(value = "id") String id,
-                           @Param(value = "skill_name") String skillName);
+    @Query("update Skill s set s.skillName = :skillName where s.id = :id")
+    void updateSkillName(@Param(value = "id") String id,
+                         @Param(value = "skillName") String skillName);
 
     @Modifying
     @Query("update Skill s set s.percentage = :percentage where s.id = :id")
-    String updatePercentage(@Param(value = "id") String id,
-                            @Param(value = "percentage") String percentage);
+    void updatePercentage(@Param(value = "id") String id,
+                          @Param(value = "percentage") String percentage);
 
 }

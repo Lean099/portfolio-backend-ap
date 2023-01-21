@@ -8,6 +8,8 @@ import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -27,7 +29,9 @@ public class Location {
     @Column(name = "id", columnDefinition = "CHAR(36)")
     @Id
     private String id;
-    private String idUser;
+    @ManyToOne
+    @JoinColumn(name = "id_user")
+    private User idUser;
     private String country;
     private String city;
     private String location;

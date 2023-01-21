@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -26,7 +28,9 @@ public class Skill {
     @Column(name = "id", columnDefinition = "CHAR(36)")
     @Id
     private String id;
-    private String idUser;
+    @ManyToOne
+    @JoinColumn(name = "id_user")
+    private User idUser;
     private String skillName;
     private Integer percentage;
 

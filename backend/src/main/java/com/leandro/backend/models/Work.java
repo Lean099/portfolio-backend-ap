@@ -15,6 +15,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 @Table(name = "work")
@@ -29,10 +32,13 @@ public class Work {
     @Column(name = "id", columnDefinition = "CHAR(36)")
     @Id
     private String id;
-    private String idUser;
+    @ManyToOne
+    @JoinColumn(name = "id_user")
+    private User idUser;
     private String company;
     private String job;
     private Date startdate;
     private Date enddate;
-    private String idPicture;
+    @OneToOne(mappedBy = "idEntity")
+    private Picture idPicture;
 }

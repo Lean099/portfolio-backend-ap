@@ -1,7 +1,5 @@
 package com.leandro.backend.repository;
 
-import java.util.Date;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -15,18 +13,18 @@ public interface UserRepository extends JpaRepository<User, String> {
     
     @Modifying
     @Query("update User u set u.firstname = :firstname where u.id = :id")
-    String updateFirstname(@Param(value = "id") String id,
-                           @Param(value = "firstname") String firstname);
+    void updateFirstname(@Param(value = "id") String id,
+                         @Param(value = "firstname") String firstname);
     
     @Modifying
     @Query("update User u set u.lastname = :lastname where u.id = :id")
-    String updateLastname(@Param(value = "id") String id,
-                          @Param(value = "lastname") String lastname);
+    void updateLastname(@Param(value = "id") String id,
+                        @Param(value = "lastname") String lastname);
 
     @Modifying
     @Query("update User u set u.email = :email where u.id = :id")
-    String updateEmail(@Param(value = "id") String id,
-                       @Param(value = "email") String email);
+    void updateEmail(@Param(value = "id") String id,
+                     @Param(value = "email") String email);
 
     @Modifying
     @Query("update User u set u.password = :password where u.id = :id")
@@ -35,26 +33,27 @@ public interface UserRepository extends JpaRepository<User, String> {
 
     @Modifying
     @Query("update User u set u.about = :about where u.id = :id")
-    String updateAbout(@Param(value = "id") String id,
-                       @Param(value = "about") String about);
+    void updateAbout(@Param(value = "id") String id,
+                     @Param(value = "about") String about);
 
     @Modifying
     @Query("update User u set u.dob = :dob where u.id = :id")
-    Date updateDob(@Param(value = "id") String id,
+    void updateDob(@Param(value = "id") String id,
                    @Param(value = "dob") String dob);
 
     @Modifying
     @Query("update User u set u.city = :city where u.id = :id")
-    String updateCity(@Param(value = "id") String id,
-                       @Param(value = "city") String city);
+    void updateCity(@Param(value = "id") String id,
+                    @Param(value = "city") String city);
 
     @Modifying
-    @Query("update User u set u.id_profile_picture = :id_profile_picture where u.id = :id")
-    String updateIdProfilePicture(@Param(value = "id") String id,
-                       @Param(value = "id_profile_picture") String idProfilePicture);
+    @Query("update User u set u.idProfilePicture = :idProfilePicture where u.id = :id")
+    void updateIdProfilePicture(@Param(value = "id") String id,
+                                @Param(value = "idProfilePicture") String idProfilePicture);
 
-                       @Modifying
-    @Query("update User u set u.id_banner_picture = :id_banner_picture where u.id = :id")
-    String updateIdBannerPicture(@Param(value = "id") String id,
-                       @Param(value = "id_banner_picture") String idBannerPicture);
+    @Modifying
+    @Query("update User u set u.idBannerPicture = :idBannerPicture where u.id = :id")
+    void updateIdBannerPicture(@Param(value = "id") String id,
+                               @Param(value = "idBannerPicture") String idBannerPicture);
+                               
 }

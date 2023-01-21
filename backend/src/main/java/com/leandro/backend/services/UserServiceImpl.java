@@ -37,47 +37,47 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String updateFirstName(String id, String firstname) {
-        return userRepo.updateFirstname(id, firstname);
+        return null;
     }
 
     @Override
     public String updateLastName(String id, String lastname) {
-        return userRepo.updateLastname(id, lastname);
+        return null;
     }
 
     @Override
     public String updateEmail(String id, String email) {
-        return userRepo.updateEmail(id, email);
+        return null;
     }
 
     @Override
     public void updatePassword(String id, String password) {
-        userRepo.updatePassword(id, password); // Antes tiene que ir la encriptacion y luego lo pasamos
+         // Antes tiene que ir la encriptacion y luego lo pasamos
     }
 
     @Override
     public String updateAbout(String id, String about) {
-        return userRepo.updateAbout(id, about);
+        return null;
     }
 
     @Override
     public Date updateDob(String id, Date dob) {
-        return userRepo.updateDob(id, id);
+        return null;
     }
 
     @Override
     public String updateCity(String idUser, String idCity) {
-        return userRepo.updateCity(idUser, idCity);
+        return null;
     }
 
     @Override
     public void updateIdProfilePicture(String idUser, String idPicture) {
-        userRepo.updateIdProfilePicture(idUser, idPicture);
+        
     }
 
     @Override
     public void updateIdBannerPicture(String idUser, String idPicture) {
-        userRepo.updateIdBannerPicture(idUser, idPicture);
+        
     }
 
 }

@@ -12,23 +12,23 @@ import com.leandro.backend.models.Location;
 public interface LocationRepository extends JpaRepository<Location, String>{
     
     @Modifying
-    @Query("update Location l set l.id_user = :id_user where l.id = :id")
-    String updateIdUser(@Param(value = "id") String id,
-                        @Param(value = "id_user") String idUser);
+    @Query("update Location l set l.idUser = :idUser where l.id = :id")
+    void updateIdUser(@Param(value = "id") String id,
+                      @Param(value = "idUser") String idUser);
 
     @Modifying
     @Query("update Location l set l.country = :country where l.id = :id")
-    String updateCountry(@Param(value = "id") String id,
-                         @Param(value = "country") String country);
+    void updateCountry(@Param(value = "id") String id,
+                       @Param(value = "country") String country);
 
     @Modifying
     @Query("update Location l set l.city = :city where l.id = :id")
-    String updateCity(@Param(value = "id") String id,
-                      @Param(value = "city") String city);
+    void updateCity(@Param(value = "id") String id,
+                    @Param(value = "city") String city);
 
     @Modifying
     @Query("update Location l set l.location = :location where l.id = :id")
-    String updateLocation(@Param(value = "id") String id,
-                          @Param(value = "location") String location);
+    void updateLocation(@Param(value = "id") String id,
+                        @Param(value = "location") String location);
 
 }
