@@ -1,6 +1,7 @@
 package com.leandro.backend.controllers;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,6 +29,11 @@ public class UserController {
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public User getUser(String id){
         return userService.getUser(id);
+    }
+
+    @RequestMapping(value = "/user/all", method = RequestMethod.GET)
+    public List<User> getAllUser(String id){
+        return userService.getAll();
     }
 
     @RequestMapping(value = "/user/updatePI", method = RequestMethod.POST)
