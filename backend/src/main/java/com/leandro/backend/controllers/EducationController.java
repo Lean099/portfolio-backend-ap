@@ -1,6 +1,7 @@
 package com.leandro.backend.controllers;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.leandro.backend.models.Education;
+import com.leandro.backend.models.User;
 import com.leandro.backend.services.EducationService;
 
 import lombok.RequiredArgsConstructor;
@@ -20,19 +22,43 @@ public class EducationController {
 
     private final EducationService educationService;
 
-    @RequestMapping(value = "/education/create", method = RequestMethod.POST)
-    public Education createEducation(@RequestBody Education education){
-        return null;
+    @RequestMapping(value = "/education/create/{idEducation}", method = RequestMethod.POST)
+    public Education createEducation(@PathVariable String idEducation, @RequestBody Education education){
+        return educationService.savEducation(education, idEducation);
     }
 
     @RequestMapping(value = "/education/{idEducation}", method = RequestMethod.POST)
     public Education getSingleEducation(@PathVariable String idEducation){
+        return educationService.getSingleEducation(idEducation);
+    }
+
+    @RequestMapping(value = "/education/all", method = RequestMethod.POST)
+    public List<Education> getAllEducation(@RequestBody User idUser){
+        return educationService.getAllUserEducation(idUser);
+    }
+
+    @RequestMapping(value = "/education/update/{idEducation}", method = RequestMethod.POST)
+    public Education updateEducation(@PathVariable String idEducation, @RequestBody Education education){
+        if(!Objects.isNull(education.getInstitution())){
+            educationService.updateInstitution(idEducation, education.getInstitution());
+        }
+        if(!Objects.isNull(education.getDegree())){
+            educationService.updateDegree(idEducation, education.getDegree());
+        }
+        if(!Objects.isNull(education.getEnddate())){
+            educationService.updateEnddate(idEducation, education.getEnddate());
+        }
+        return educationService.getSingleEducation(idEducation);
+    }
+
+    @RequestMapping(value = "/education/uploadPicture", method = RequestMethod.POST)
+    public String uploadPicture(){
         return null;
     }
 
-    @RequestMapping(value = "/education/all/{idUser}", method = RequestMethod.POST)
-    public List<Education> getAllEducation(@PathVariable String idUser){
-        return null;
+    @RequestMapping(value = "/education/delete/{idEducation}", method = RequestMethod.DELETE)
+    public String deleteEducation(@PathVariable String idEducation){
+        return educationService.deleteEducation(idEducation);
     }
     
 }

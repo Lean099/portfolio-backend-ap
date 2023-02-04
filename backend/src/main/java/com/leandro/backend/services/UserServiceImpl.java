@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUser(String id) {
-        return userRepo.getReferenceById(id);
+        return userRepo.findById(id).get();
     }
 
     @Override
@@ -36,38 +36,39 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String updateFirstName(String id, String firstname) {
-        return null;
+    public void updateFirstName(String id, String firstname) {
+        userRepo.updateFirstname(id, firstname);
     }
 
     @Override
-    public String updateLastName(String id, String lastname) {
-        return null;
+    public void updateLastName(String id, String lastname) {
+        userRepo.updateLastname(id, lastname);;
     }
 
     @Override
-    public String updateEmail(String id, String email) {
-        return null;
+    public void updateEmail(String id, String email) {
+        userRepo.updateEmail(id, email);;
     }
 
     @Override
     public void updatePassword(String id, String password) {
          // Antes tiene que ir la encriptacion y luego lo pasamos
+         userRepo.updatePassword(id, password);
     }
 
     @Override
-    public String updateAbout(String id, String about) {
-        return null;
+    public void updateAbout(String id, String about) {
+        userRepo.updateAbout(id, about);;
     }
 
     @Override
-    public Date updateDob(String id, Date dob) {
-        return null;
+    public void updateDob(String id, Date dob) {
+        userRepo.updateDob(id, dob);;
     }
 
     @Override
-    public String updateCity(String idUser, String idCity) {
-        return null;
+    public void updateCity(String idUser, String idCity) {
+        userRepo.updateCity(idUser, idCity);;
     }
 
     @Override

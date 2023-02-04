@@ -11,6 +11,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -34,9 +35,10 @@ public class User {
     private String email;
     private String password;
     private String about;
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date dob;
-    @OneToOne(mappedBy = "idUser")
-    private Location city;
+    //@OneToOne(mappedBy = "idUser")
+    private String city;
     private String idProfilePicture;
     private String idBannerPicture;
 

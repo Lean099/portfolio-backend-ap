@@ -4,6 +4,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -37,8 +38,14 @@ public class Work {
     private User idUser;
     private String company;
     private String job;
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date startdate;
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date enddate;
-    @OneToOne(mappedBy = "idEntity")
-    private Picture idPicture;
+    //@OneToOne(mappedBy = "idEntity")
+    private String idPicture;
+
+    public String getIdUser(){
+        return this.idUser.getId();
+    }
 }

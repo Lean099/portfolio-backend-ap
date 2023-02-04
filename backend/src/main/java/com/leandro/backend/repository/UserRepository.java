@@ -1,5 +1,7 @@
 package com.leandro.backend.repository;
 
+import java.util.Date;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -39,7 +41,7 @@ public interface UserRepository extends JpaRepository<User, String> {
     @Modifying
     @Query("update User u set u.dob = :dob where u.id = :id")
     void updateDob(@Param(value = "id") String id,
-                   @Param(value = "dob") String dob);
+                   @Param(value = "dob") Date dob);
 
     @Modifying
     @Query("update User u set u.city = :city where u.id = :id")

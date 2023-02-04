@@ -37,7 +37,7 @@ public class Education {
     private String institution;
     private String degree;
     private Date enddate;
-    @OneToOne(mappedBy = "idEntity")
-    private Picture idPicture;
+    //@OneToOne(mappedBy = "idEntity")
+    private String idPicture;
 
 }

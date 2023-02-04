@@ -1,5 +1,7 @@
 package com.leandro.backend.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -7,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.leandro.backend.models.Skill;
+import com.leandro.backend.models.User;
 
 @Repository
 public interface SkillRepository extends JpaRepository<Skill, String>{
@@ -24,6 +27,8 @@ public interface SkillRepository extends JpaRepository<Skill, String>{
     @Modifying
     @Query("update Skill s set s.percentage = :percentage where s.id = :id")
     void updatePercentage(@Param(value = "id") String id,
-                          @Param(value = "percentage") String percentage);
+                          @Param(value = "percentage") int percentage);
+
+    List<Skill> findAllByIdUser(User idUser);
 
 }
