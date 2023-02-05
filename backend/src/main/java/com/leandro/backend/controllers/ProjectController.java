@@ -22,22 +22,22 @@ public class ProjectController {
     
     private final ProjectService projectService;
 
-    @RequestMapping(value = "/project/create/{idProject}", method = RequestMethod.POST)
-    public Project createProject(@PathVariable String idProject, @RequestBody Project project){
-        return projectService.saveProject(project, idProject);
+    @RequestMapping(value = "/project/create/{idUser}", method = RequestMethod.POST) // Funciona
+    public Project createProject(@PathVariable String idUser, @RequestBody Project project){
+        return projectService.saveProject(project, idUser);
     }
 
     @RequestMapping(value = "/project/{idProject}", method = RequestMethod.GET)
-    public Project getSingleProject(@PathVariable String idProject){
+    public Project getSingleProject(@PathVariable String idProject){ // Funciona
         return projectService.getProject(idProject);
     }
 
     @RequestMapping(value = "/project/all", method = RequestMethod.GET)
-    public List<Project> getAllProject(@RequestBody User idUser){
+    public List<Project> getAllProject(@RequestBody User idUser){ // Funciona
         return projectService.getAllUserProject(idUser);
     }
 
-    @RequestMapping(value = "/project/update/{idProject}", method = RequestMethod.POST)
+    @RequestMapping(value = "/project/update/{idProject}", method = RequestMethod.POST) // Funciona
     public Project updateProject(@PathVariable String idProject, @RequestBody Project project){
         if(!Objects.isNull(project.getName())){
             projectService.updateName(idProject, project.getName());
@@ -55,7 +55,7 @@ public class ProjectController {
     }
 
     @RequestMapping(value = "/project/delete/{idProject}", method = RequestMethod.DELETE)
-    public String deleteProject(@PathVariable String idProject){
+    public String deleteProject(@PathVariable String idProject){ // Funciona
         return projectService.deleteProject(idProject);
     }
 

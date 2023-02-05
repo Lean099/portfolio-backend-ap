@@ -8,7 +8,7 @@ import com.leandro.backend.models.User;
 
 public interface EducationService {
     
-    Education savEducation(Education education, String idEducation);
+    Education saveEducation(Education education, String idUser);
     Education getSingleEducation(String idEducation);
     List<Education> getAllUserEducation(User idUser);
     String deleteEducation(String idEducation);

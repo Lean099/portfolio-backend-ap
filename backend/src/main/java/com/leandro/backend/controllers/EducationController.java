@@ -22,22 +22,22 @@ public class EducationController {
 
     private final EducationService educationService;
 
-    @RequestMapping(value = "/education/create/{idEducation}", method = RequestMethod.POST)
-    public Education createEducation(@PathVariable String idEducation, @RequestBody Education education){
-        return educationService.savEducation(education, idEducation);
+    @RequestMapping(value = "/education/create/{idUser}", method = RequestMethod.POST) // Funciona
+    public Education createEducation(@PathVariable String idUser, @RequestBody Education education){
+        return educationService.saveEducation(education, idUser);
     }
 
-    @RequestMapping(value = "/education/{idEducation}", method = RequestMethod.POST)
-    public Education getSingleEducation(@PathVariable String idEducation){
+    @RequestMapping(value = "/education/{idEducation}", method = RequestMethod.GET)
+    public Education getSingleEducation(@PathVariable String idEducation){ // Funciona
         return educationService.getSingleEducation(idEducation);
     }
 
-    @RequestMapping(value = "/education/all", method = RequestMethod.POST)
-    public List<Education> getAllEducation(@RequestBody User idUser){
+    @RequestMapping(value = "/education/all", method = RequestMethod.GET)
+    public List<Education> getAllEducation(@RequestBody User idUser){ // Funciona
         return educationService.getAllUserEducation(idUser);
     }
 
-    @RequestMapping(value = "/education/update/{idEducation}", method = RequestMethod.POST)
+    @RequestMapping(value = "/education/update/{idEducation}", method = RequestMethod.POST) // Funciona
     public Education updateEducation(@PathVariable String idEducation, @RequestBody Education education){
         if(!Objects.isNull(education.getInstitution())){
             educationService.updateInstitution(idEducation, education.getInstitution());
@@ -57,7 +57,7 @@ public class EducationController {
     }
 
     @RequestMapping(value = "/education/delete/{idEducation}", method = RequestMethod.DELETE)
-    public String deleteEducation(@PathVariable String idEducation){
+    public String deleteEducation(@PathVariable String idEducation){ // Funciona
         return educationService.deleteEducation(idEducation);
     }
     

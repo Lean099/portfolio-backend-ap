@@ -7,7 +7,7 @@ import com.leandro.backend.models.User;
 
 public interface ProjectService {
     
-    Project saveProject(Project project, String idProject);
+    Project saveProject(Project project, String idUser);
     Project getProject(String idProject);
     List<Project> getAllUserProject(User idUser);
     String deleteProject(String idProject);

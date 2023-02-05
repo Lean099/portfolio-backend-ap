@@ -34,4 +34,8 @@ public class Skill {
     private String skillName;
     private Integer percentage;
 
+    public String getIdUser(){
+        return this.idUser.getId();
+    }
+
 }

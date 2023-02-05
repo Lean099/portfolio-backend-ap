@@ -22,22 +22,22 @@ public class SkillController {
     
     private final SkillService skillService;
 
-    @RequestMapping(value = "/skill/create/{idUser}", method = RequestMethod.POST)
+    @RequestMapping(value = "/skill/create/{idUser}", method = RequestMethod.POST)  // Funciona
     public Skill createSkill(@PathVariable String idUser, @RequestBody Skill skill){
         return skillService.saveSkill(skill, idUser);
     }
 
     @RequestMapping(value = "/skill/{idSkill}", method = RequestMethod.GET)
-    public Skill getSingleSkill(@PathVariable String idSkill){
+    public Skill getSingleSkill(@PathVariable String idSkill){ // Funciona
         return skillService.getSkill(idSkill);
     }
 
     @RequestMapping(value = "/skill/all", method = RequestMethod.GET)
-    public List<Skill> getAllSkill(@RequestBody User idUser){
+    public List<Skill> getAllSkill(@RequestBody User idUser){ // Funciona
         return skillService.getAllUserSkill(idUser);
     }
 
-    @RequestMapping(value = "/skill/update/{idSkill}", method = RequestMethod.POST)
+    @RequestMapping(value = "/skill/update/{idSkill}", method = RequestMethod.POST) // Funciona
     public Skill updateSkill(@PathVariable String idSkill, @RequestBody Skill skill){
         if(!Objects.isNull(skill.getSkillName())){
             skillService.updateSkillName(idSkill, skill.getSkillName());
@@ -49,7 +49,7 @@ public class SkillController {
     }
 
     @RequestMapping(value = "/skill/delete/{idSkill}", method = RequestMethod.DELETE)
-    public String deleteSkill(@PathVariable String idSkill){
+    public String deleteSkill(@PathVariable String idSkill){ // Funciona
         return skillService.deleteSkill(idSkill);
     }
 

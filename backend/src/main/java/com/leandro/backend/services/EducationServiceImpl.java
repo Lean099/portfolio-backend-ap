@@ -24,8 +24,8 @@ public class EducationServiceImpl implements EducationService{
     private final EntityManager entityManager;
 
     @Override
-    public Education savEducation(Education education, String idEducation) {
-        education.setIdUser(entityManager.getReference(User.class, idEducation));
+    public Education saveEducation(Education education, String idUser) {
+        education.setIdUser(entityManager.getReference(User.class, idUser));
         return educationRepo.save(education);
     }
 

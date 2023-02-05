@@ -23,8 +23,8 @@ public class ProjectServiceImpl implements ProjectService{
     private final EntityManager entityManager;
 
     @Override
-    public Project saveProject(Project project, String idProject) {
-        project.setIdUser(entityManager.getReference(User.class, idProject));
+    public Project saveProject(Project project, String idUser) {
+        project.setIdUser(entityManager.getReference(User.class, idUser));
         return projectRepo.save(project);
     }
 

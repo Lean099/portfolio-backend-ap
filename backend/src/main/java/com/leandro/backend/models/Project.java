@@ -36,4 +36,8 @@ public class Project {
     private String linkGithub;
     private String linkProject;
 
+    public String getIdUser(){
+        return this.idUser.getId();
+    }
+
 }
