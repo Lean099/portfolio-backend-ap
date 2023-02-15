@@ -2,26 +2,31 @@ package com.leandro.backend.services;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.EntityManager;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
+import com.leandro.backend.models.Picture;
 import com.leandro.backend.models.User;
 import com.leandro.backend.models.Work;
 import com.leandro.backend.repository.WorkRepository;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor 
 @org.springframework.transaction.annotation.Transactional
-@Slf4j
 public class WorkServiceImpl implements WorkService{
     
     private final WorkRepository workRepo;
     private final EntityManager entityManager;
+    @Lazy
+    @Autowired
+    private PictureService pictureService;
 
     @Override
     public Work saveWork(Work work, String idUser) {
@@ -56,7 +61,20 @@ public class WorkServiceImpl implements WorkService{
     }
 
     @Override
-    public void updateIdUser(String idWork, String idUser) {
+    public void hasAPicture(String idWork) {
+        Work work = getWork(idWork);
+        if(Objects.nonNull(work.getIdPicture())){
+            String idPicture = work.getIdPicture().getId();
+            String idPic = pictureService.findPicture(idPicture).getId();
+            pictureService.destroyFile(idPic);
+            updateIdPicture(idWork, null);
+        }else{
+            return;
+        }
+    }
+
+    @Override
+    public void updateIdUser(String idWork, User idUser) {
         workRepo.updateIdUser(idWork, idUser);
     }
 
@@ -81,7 +99,7 @@ public class WorkServiceImpl implements WorkService{
     }
 
     @Override
-    public void updateIdPicture(String idWork, String idPicture) {
+    public void updateIdPicture(String idWork, Picture idPicture) {
         workRepo.updateIdPicture(idWork, idPicture);
     }
 

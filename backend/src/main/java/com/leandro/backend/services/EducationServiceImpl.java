@@ -2,26 +2,31 @@ package com.leandro.backend.services;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.EntityManager;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import com.leandro.backend.models.Education;
+import com.leandro.backend.models.Picture;
 import com.leandro.backend.models.User;
 import com.leandro.backend.repository.EducationRepository;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor 
 @org.springframework.transaction.annotation.Transactional
-@Slf4j
 public class EducationServiceImpl implements EducationService{
     
     private final EducationRepository educationRepo;
     private final EntityManager entityManager;
+    @Lazy
+    @Autowired
+    private PictureService pictureService;
 
     @Override
     public Education saveEducation(Education education, String idUser) {
@@ -56,7 +61,20 @@ public class EducationServiceImpl implements EducationService{
     }
 
     @Override
-    public void updateIdUser(String id, String idUser) {
+    public void hasAPicture(String idEducation) {
+        Education edu = getSingleEducation(idEducation);
+        if(Objects.nonNull(edu.getIdPicture())){
+            String idPicture = edu.getIdPicture().getId();
+            String idPic = pictureService.findPicture(idPicture).getId();
+            pictureService.destroyFile(idPic);
+            updateIdPicture(idEducation, null);
+        }else{
+            return;
+        }
+    }
+
+    @Override
+    public void updateIdUser(String id, User idUser) {
         educationRepo.updateIdUser(id, idUser);
     }
 
@@ -76,7 +94,7 @@ public class EducationServiceImpl implements EducationService{
     }
 
     @Override
-    public void updateIdPicture(String id, String idPicture) {
+    public void updateIdPicture(String id, Picture idPicture) {
         educationRepo.updateIdPicture(id, idPicture);
     }
 

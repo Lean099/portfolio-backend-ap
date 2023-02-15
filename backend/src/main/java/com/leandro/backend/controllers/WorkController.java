@@ -52,11 +52,6 @@ public class WorkController {
         return workService.getWork(idWork);
     }
 
-    @RequestMapping(value = "/work/uploadPicture", method = RequestMethod.POST)
-    public String uploadPicture(){
-        return null;
-    }
-
     @RequestMapping(value = "/work/delete/{idWork}", method = RequestMethod.DELETE) 
     public String deleteWork(@PathVariable String idWork){ // Funciona
         return workService.deleteWork(idWork);

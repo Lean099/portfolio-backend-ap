@@ -51,11 +51,6 @@ public class EducationController {
         return educationService.getSingleEducation(idEducation);
     }
 
-    @RequestMapping(value = "/education/uploadPicture", method = RequestMethod.POST)
-    public String uploadPicture(){
-        return null;
-    }
-
     @RequestMapping(value = "/education/delete/{idEducation}", method = RequestMethod.DELETE)
     public String deleteEducation(@PathVariable String idEducation){ // Funciona
         return educationService.deleteEducation(idEducation);

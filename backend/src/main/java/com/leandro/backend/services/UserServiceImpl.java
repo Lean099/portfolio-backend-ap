@@ -2,22 +2,27 @@ package com.leandro.backend.services;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
+import com.leandro.backend.models.Picture;
 import com.leandro.backend.models.User;
 import com.leandro.backend.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @Service 
 @RequiredArgsConstructor 
 @org.springframework.transaction.annotation.Transactional
-@Slf4j
 public class UserServiceImpl implements UserService {
     
     private final UserRepository userRepo;
+    @Lazy
+    @Autowired
+    private PictureService pictureService;
 
     @Override
     public User saveUser(User user) {
@@ -33,6 +38,30 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getAll() {
         return userRepo.findAll();
+    }
+
+    @Override
+    public void hasAProfilePicture(String idUser) {
+        User user = getUser(idUser);
+        if(Objects.nonNull(user.getIdProfilePicture())){
+            String idPicture = user.getIdProfilePicture().getId();
+            String idPic = pictureService.findPicture(idPicture).getId();
+            pictureService.destroyFile(idPic);
+            updateIdProfilePicture(idUser, null);
+        }else{
+            return;
+        }
+    }
+
+    @Override
+    public void hasABannerPicture(String idUser) {
+        User user = getUser(idUser);
+        if(Objects.nonNull(user.getIdBannerPicture())){
+            String idPicture = user.getIdBannerPicture().getId();
+            String idPic = pictureService.findPicture(idPicture).getId();
+            pictureService.destroyFile(idPic);
+            updateIdBannerPicture(idUser, null);
+        }
     }
 
     @Override
@@ -72,13 +101,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateIdProfilePicture(String idUser, String idPicture) {
-        
+    public void updateIdProfilePicture(String idUser, Picture idPicture) {
+        userRepo.updateIdProfilePicture(idUser, idPicture);
     }
 
     @Override
-    public void updateIdBannerPicture(String idUser, String idPicture) {
-        
+    public void updateIdBannerPicture(String idUser, Picture idPicture) {
+        userRepo.updateIdBannerPicture(idUser, idPicture);
     }
 
 }

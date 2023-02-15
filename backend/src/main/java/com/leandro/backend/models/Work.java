@@ -42,8 +42,9 @@ public class Work {
     private Date startdate;
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date enddate;
-    //@OneToOne(mappedBy = "idEntity")
-    private String idPicture;
+    @OneToOne
+    @JoinColumn(name = "id_picture")
+    private Picture idPicture;
 
     public String getIdUser(){
         return this.idUser.getId();

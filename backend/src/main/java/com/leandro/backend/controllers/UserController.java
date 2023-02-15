@@ -75,9 +75,4 @@ public class UserController {
         return null;
     }
 
-    @RequestMapping(value = "/user/uploadPicture", method = RequestMethod.POST)
-    public String uploadPicture(){
-        return null;
-    }
-
 }

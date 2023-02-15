@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.leandro.backend.models.Education;
+import com.leandro.backend.models.Picture;
 import com.leandro.backend.models.User;
 
 public interface EducationService {
@@ -13,10 +14,11 @@ public interface EducationService {
     List<Education> getAllUserEducation(User idUser);
     String deleteEducation(String idEducation);
     String deleteAllUserEducation(User idUser);
-    void updateIdUser(String id, String idUser);
+    void hasAPicture(String idEducation);
+    void updateIdUser(String id, User idUser);
     void updateInstitution(String id, String institution);
     void updateDegree(String id, String degree);
     void updateEnddate(String id, Date enddate);
-    void updateIdPicture(String id, String idPicture);
+    void updateIdPicture(String id, Picture idPicture);
     
 }

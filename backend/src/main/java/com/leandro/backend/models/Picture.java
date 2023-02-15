@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -32,11 +31,13 @@ public class Picture {
     @ManyToOne
     @JoinColumn(name = "id_user")
     private User idUser;
-    @OneToOne
-    @JoinColumn(name = "id_entity")
-    private Picture idEntity;
+    private String idEntity;
     private String publicId;
     private String filename;
     private String url;
+
+    public String getIdUser(){
+        return this.idUser.getId();
+    }
 
 }

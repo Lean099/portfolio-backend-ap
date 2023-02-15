@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.leandro.backend.models.Picture;
 import com.leandro.backend.models.User;
 import com.leandro.backend.models.Work;
 
@@ -18,7 +19,7 @@ public interface WorkRepository extends JpaRepository<Work, String> {
     @Modifying
     @Query("update Work w set w.idUser = :idUser where w.id = :id")
     void updateIdUser(@Param(value = "id") String id,
-                      @Param(value = "idUser") String idUser);
+                      @Param(value = "idUser") User idUser);
 
     @Modifying
     @Query("update Work w set w.company = :company where w.id = :id")
@@ -43,7 +44,7 @@ public interface WorkRepository extends JpaRepository<Work, String> {
     @Modifying
     @Query("update Work w set w.idPicture = :idPicture where w.id = :id")
     void updateIdPicture(@Param(value = "id") String id,
-                         @Param(value = "idPicture") String idPicture);
+                         @Param(value = "idPicture") Picture idPicture);
 
     List<Work> findAllByIdUser(User idUser);
 

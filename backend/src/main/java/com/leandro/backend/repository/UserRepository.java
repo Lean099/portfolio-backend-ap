@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.leandro.backend.models.Picture;
 import com.leandro.backend.models.User;
 
 @Repository
@@ -51,11 +52,11 @@ public interface UserRepository extends JpaRepository<User, String> {
     @Modifying
     @Query("update User u set u.idProfilePicture = :idProfilePicture where u.id = :id")
     void updateIdProfilePicture(@Param(value = "id") String id,
-                                @Param(value = "idProfilePicture") String idProfilePicture);
+                                @Param(value = "idProfilePicture") Picture idProfilePicture);
 
     @Modifying
     @Query("update User u set u.idBannerPicture = :idBannerPicture where u.id = :id")
     void updateIdBannerPicture(@Param(value = "id") String id,
-                               @Param(value = "idBannerPicture") String idBannerPicture);
+                               @Param(value = "idBannerPicture") Picture idBannerPicture);
                                
 }

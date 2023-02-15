@@ -1,5 +1,7 @@
 package com.leandro.backend.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -35,5 +37,9 @@ public interface PictureRepository extends JpaRepository<Picture, String>{
     @Query("update Picture p set p.url = :url where p.id = :id")
     void updateUrl(@Param(value = "id") String id,
                    @Param(value = "url") String url);
+
+    @Query(value= "select * from Pictures p where p.id_user = :idUser and p.id_entity is null",
+    nativeQuery = true)
+    List<Picture> findAllByIdUserAndIdEntity(@Param(value = "idUser") String idUser);
 
 }

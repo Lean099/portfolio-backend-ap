@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -37,9 +38,12 @@ public class User {
     private String about;
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date dob;
-    //@OneToOne(mappedBy = "idUser")
     private String city;
-    private String idProfilePicture;
-    private String idBannerPicture;
+    @OneToOne
+    @JoinColumn(name = "id_profile_picture")
+    private Picture idProfilePicture;
+    @OneToOne
+    @JoinColumn(name = "id_banner_picture")
+    private Picture idBannerPicture;
 
 }
