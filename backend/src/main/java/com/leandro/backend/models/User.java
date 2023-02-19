@@ -38,7 +38,9 @@ public class User {
     private String about;
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date dob;
-    private String city;
+    @OneToOne
+    @JoinColumn(name = "address")
+    private Address address;
     @OneToOne
     @JoinColumn(name = "id_profile_picture")
     private Picture idProfilePicture;

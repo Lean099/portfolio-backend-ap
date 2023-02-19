@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
+import com.leandro.backend.models.Address;
 import com.leandro.backend.models.Picture;
 import com.leandro.backend.models.User;
 import com.leandro.backend.repository.UserRepository;
@@ -96,8 +97,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateCity(String idUser, String idCity) {
-        userRepo.updateCity(idUser, idCity);;
+    public void updateAddress(String idUser, Address idAddress) {
+        userRepo.updateAddress(idUser, idAddress);
     }
 
     @Override

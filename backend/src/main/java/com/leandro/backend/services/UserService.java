@@ -3,6 +3,7 @@ package com.leandro.backend.services;
 import java.util.Date;
 import java.util.List;
 
+import com.leandro.backend.models.Address;
 import com.leandro.backend.models.Picture;
 import com.leandro.backend.models.User;
 
@@ -19,7 +20,7 @@ public interface UserService {
     void updatePassword(String id, String password);
     void updateAbout(String id, String about);
     void updateDob(String id, Date dob);  // Haremos una logica para que la edad sea valida si es mayor a 18
-    void updateCity(String idUser, String idCity);
+    void updateAddress(String idUser, Address idAddress);
     void updateIdProfilePicture(String idUser, Picture idPicture);
     void updateIdBannerPicture(String idUser, Picture idPicture);
     
