@@ -1,4 +1,4 @@
-CREATE TABLE railway.projects (
+CREATE TABLE public.projects (
 	id CHAR(36) NOT NULL,
 	id_user CHAR(36) NOT NULL,
 	name varchar(100) NULL,
@@ -6,7 +6,7 @@ CREATE TABLE railway.projects (
 	link_github varchar(500) NULL,
 	link_project varchar(500) NULL,
 	CONSTRAINT projects_PK PRIMARY KEY (id),
-	CONSTRAINT projects_FK FOREIGN KEY (id_user) REFERENCES railway.users(id)
+	CONSTRAINT projects_user_FK FOREIGN KEY (id_user) REFERENCES public.users(id)
 )
 ENGINE=InnoDB
 DEFAULT CHARSET=utf8mb4
