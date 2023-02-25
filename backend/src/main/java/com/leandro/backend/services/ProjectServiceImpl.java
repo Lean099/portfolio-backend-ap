@@ -11,12 +11,10 @@ import com.leandro.backend.models.User;
 import com.leandro.backend.repository.ProjectRepository;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor 
 @org.springframework.transaction.annotation.Transactional
-@Slf4j
 public class ProjectServiceImpl implements ProjectService{
     
     private final ProjectRepository projectRepo;

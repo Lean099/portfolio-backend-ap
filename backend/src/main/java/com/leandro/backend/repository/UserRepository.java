@@ -1,6 +1,7 @@
 package com.leandro.backend.repository;
 
 import java.util.Date;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -59,5 +60,7 @@ public interface UserRepository extends JpaRepository<User, String> {
     @Query("update User u set u.idBannerPicture = :idBannerPicture where u.id = :id")
     void updateIdBannerPicture(@Param(value = "id") String id,
                                @Param(value = "idBannerPicture") Picture idBannerPicture);
+
+    Optional<User> findByEmail(String email);  // Funciona tambien sin el optional y solo User
                                
 }

@@ -1,33 +1,54 @@
 package com.leandro.backend.services;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.leandro.backend.models.Address;
 import com.leandro.backend.models.Picture;
 import com.leandro.backend.models.User;
 import com.leandro.backend.repository.UserRepository;
+import com.leandro.backend.security.PasswordConfig;
 
 import lombok.RequiredArgsConstructor;
 
 @Service 
 @RequiredArgsConstructor 
 @org.springframework.transaction.annotation.Transactional
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDetailsService {
     
     private final UserRepository userRepo;
     @Lazy
     @Autowired
     private PictureService pictureService;
+    @Autowired
+    private PasswordConfig passwordEncoder;
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = userRepo.findByEmail(email).get();
+        if(user == null){
+            throw new UsernameNotFoundException("User not found in the database");
+        }else{
+            Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
+            return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
+        }
+    }
 
     @Override
     public User saveUser(User user) {
-        // Faltaria que antes de guardar el user en la db encripte el password, cuando lleguemos a spring security
+        user.setPassword(passwordEncoder.passwordEncoder().encode(user.getPassword()));
         return userRepo.save(user);
     }
 
@@ -82,8 +103,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updatePassword(String id, String password) {
-         // Antes tiene que ir la encriptacion y luego lo pasamos
-         userRepo.updatePassword(id, password);
+         userRepo.updatePassword(id, passwordEncoder.passwordEncoder().encode(password));
     }
 
     @Override
