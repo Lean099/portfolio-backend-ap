@@ -19,7 +19,7 @@ public interface UserService {
     void updateEmail(String id, String email);
     void updatePassword(String id, String password);
     void updateAbout(String id, String about);
-    void updateDob(String id, Date dob);  // Haremos una logica para que la edad sea valida si es mayor a 18
+    void updateDob(String id, Date dob);
     void updateAddress(String idUser, Address idAddress);
     void updateIdProfilePicture(String idUser, Picture idPicture);
     void updateIdBannerPicture(String idUser, Picture idPicture);

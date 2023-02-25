@@ -1,6 +1,5 @@
 package com.leandro.backend.services;
 
-import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.EntityManager;
@@ -94,13 +93,5 @@ public class AddressServiceImpl implements AddressService {
             addressRepo.updateProvince(id, provinceService.saveProvince(province));
         }
     }
-
-    // Solo para testear
-    @Override
-    public List<Address> getAll() {
-        return addressRepo.findAll();
-    }
-
-        
 
 }

@@ -1,6 +1,5 @@
 package com.leandro.backend.controllers;
 
-import java.util.List;
 import java.util.Objects;
 
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,21 +20,14 @@ public class UserController {
 
     private final UserService userService;
 
-    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(UserController.class);
-
-    @RequestMapping(value = "/user/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/create", method = RequestMethod.POST) // Funciona
     public User createUser(@RequestBody User user){
         return userService.saveUser(user);
     }
 
-    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET) // Funciona
     public User getUser(@PathVariable String id){
         return userService.getUser(id);
-    }
-
-    @RequestMapping(value = "/user/all", method = RequestMethod.GET)
-    public List<User> getAllUser(){
-        return userService.getAll();
     }
 
     @RequestMapping(value = "/user/updatePI", method = RequestMethod.POST)
@@ -59,7 +51,6 @@ public class UserController {
 
     @RequestMapping(value = "/user/updateEP", method = RequestMethod.POST)
     public User updateEmailAndPassword(@RequestBody User credentials){ // Funciona
-        log.info(credentials.getId());
         String id = credentials.getId();
         if(!Objects.isNull(credentials.getEmail())){
             userService.updateEmail(id, credentials.getEmail());
@@ -68,11 +59,6 @@ public class UserController {
             userService.updatePassword(id, credentials.getPassword());
         }
         return userService.getUser(credentials.getId());
-    }
-
-    @RequestMapping(value = "/user/updateCity", method = RequestMethod.POST)
-    public String updateCity(String id, String city){
-        return null;
     }
 
 }

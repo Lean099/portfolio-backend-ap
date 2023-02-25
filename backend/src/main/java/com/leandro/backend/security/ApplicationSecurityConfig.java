@@ -2,7 +2,6 @@ package com.leandro.backend.security;
 
 import java.util.List;
 
-import org.apache.catalina.core.ApplicationContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,17 +11,11 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-//import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
 
-import com.leandro.backend.filter.CustomAuthenticationFilter;
-import com.leandro.backend.filter.CustomAuthorizationFilter;
-import com.leandro.backend.security.MyCustomDsl;
+import org.springframework.security.web.SecurityFilterChain;
+
+import org.springframework.web.cors.CorsConfiguration;
 
 @Configuration
 @EnableWebSecurity
@@ -32,10 +25,7 @@ public class ApplicationSecurityConfig{
     @Autowired
     private UserDetailsService userDetailsService;
     @Autowired
-    private PasswordConfig passwordEncoder;  // revisar esto, podria usar el PasswordConfig
-    //private PasswordEncoder passwordEnconder;
-    //@Autowired
-    //private ApplicationContext applicationContext;
+    private PasswordConfig passwordEncoder;
 
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception{
@@ -67,8 +57,6 @@ public class ApplicationSecurityConfig{
             .anyRequest().authenticated()
             .and()
             .apply(MyCustomDsl.customDsl());
-            
-            //.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
             
             return http.build();
     }
