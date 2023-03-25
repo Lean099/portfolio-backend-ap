@@ -40,8 +40,10 @@ public class WorkServiceImpl implements WorkService{
     }
 
     @Override
-    public List<Work> getAllUserWork(User idUser) {
-        return workRepo.findAllByIdUser(idUser);
+    public List<Work> getAllUserWork(String idUser) {
+        User user = new User();
+        user.setId(idUser);
+        return workRepo.findAllByIdUser(user);
     }
 
     @Override
@@ -55,7 +57,7 @@ public class WorkServiceImpl implements WorkService{
     }
 
     @Override
-    public String deleteAllUserWork(User idUser) {
+    public String deleteAllUserWork(String idUser) {
         workRepo.deleteAll(getAllUserWork(idUser));
         return "All deleted";
     }

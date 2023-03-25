@@ -11,9 +11,9 @@ public interface EducationService {
     
     Education saveEducation(Education education, String idUser);
     Education getSingleEducation(String idEducation);
-    List<Education> getAllUserEducation(User idUser);
+    List<Education> getAllUserEducation(String idUser);
     String deleteEducation(String idEducation);
-    String deleteAllUserEducation(User idUser);
+    String deleteAllUserEducation(String idUser);
     void hasAPicture(String idEducation);
     void updateIdUser(String id, User idUser);
     void updateInstitution(String id, String institution);

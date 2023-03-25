@@ -61,6 +61,13 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
+    public Address getAddressByIdUser(String idUser) {  // Funciona
+        User user = new User();
+        user.setId(idUser);
+        return addressRepo.findByIdUser(user).get();
+    }
+
+    @Override
     public void deleteAddress(String idAddress) {  // Funciona
         Address a = getAddress(idAddress);
         addressRepo.deleteById(a.getId());

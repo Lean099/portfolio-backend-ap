@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.leandro.backend.models.Education;
-import com.leandro.backend.models.User;
 import com.leandro.backend.services.EducationService;
 
 import lombok.RequiredArgsConstructor;
@@ -32,8 +31,8 @@ public class EducationController {
         return educationService.getSingleEducation(idEducation);
     }
 
-    @RequestMapping(value = "/education/all", method = RequestMethod.GET)
-    public List<Education> getAllEducation(@RequestBody User idUser){ // Funciona
+    @RequestMapping(value = "/education/all/{idUser}", method = RequestMethod.GET)
+    public List<Education> getAllEducation(@PathVariable String idUser){ // Funciona
         return educationService.getAllUserEducation(idUser);
     }
 

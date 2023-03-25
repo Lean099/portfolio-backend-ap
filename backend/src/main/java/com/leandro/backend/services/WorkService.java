@@ -11,9 +11,9 @@ public interface WorkService {
     
     Work saveWork(Work work, String idUser);
     Work getWork(String idWork);
-    List<Work> getAllUserWork(User idUser);
+    List<Work> getAllUserWork(String idUser);
     String deleteWork(String idWork);
-    String deleteAllUserWork(User idUser);
+    String deleteAllUserWork(String idUser);
     void hasAPicture(String idWork);
     void updateIdUser(String idWork, User idUser);
     void updateCompany(String idWork, String company);

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.leandro.backend.models.User;
 import com.leandro.backend.services.UserService;
+import com.leandro.backend.utils.DefaultUser;
 
 import lombok.RequiredArgsConstructor;
 
@@ -28,6 +29,11 @@ public class UserController {
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET) // Funciona
     public User getUser(@PathVariable String id){
         return userService.getUser(id);
+    }
+
+    @RequestMapping(value = "/user/defaultUser/{idUser}", method = RequestMethod.GET) // Funciona
+    public DefaultUser getDefaultUser(@PathVariable String idUser){
+        return userService.getDefaultDataUser(idUser);
     }
 
     @RequestMapping(value = "/user/updatePI", method = RequestMethod.POST)

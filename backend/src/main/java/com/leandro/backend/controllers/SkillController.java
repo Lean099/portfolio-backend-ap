@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.leandro.backend.models.Skill;
-import com.leandro.backend.models.User;
 import com.leandro.backend.services.SkillService;
 
 import lombok.RequiredArgsConstructor;
@@ -32,8 +31,8 @@ public class SkillController {
         return skillService.getSkill(idSkill);
     }
 
-    @RequestMapping(value = "/skill/all", method = RequestMethod.GET)
-    public List<Skill> getAllSkill(@RequestBody User idUser){ // Funciona
+    @RequestMapping(value = "/skill/all/{idUser}", method = RequestMethod.GET)
+    public List<Skill> getAllSkill(@PathVariable String idUser){ // Funciona
         return skillService.getAllUserSkill(idUser);
     }
 

@@ -44,7 +44,7 @@ public class ApplicationSecurityConfig{
             .and()
             .cors().configurationSource(request -> {
                 var cors = new CorsConfiguration();
-                cors.setAllowedOrigins(List.of("http://localhost:3000", "http://127.0.0.1:3000", "http://127.0.0.1:8080", "*"));
+                cors.setAllowedOrigins(List.of("*", "https://lean099-vigilant-space-invention-9j4wgq7j994cxv4p.github.dev"));
                 cors.setAllowedMethods(List.of("GET","POST", "PUT", "DELETE", "OPTIONS"));
                 cors.setAllowedHeaders(List.of("*"));
                 return cors;
@@ -53,6 +53,7 @@ public class ApplicationSecurityConfig{
             .authorizeRequests()
             .antMatchers("/login").permitAll()
             .antMatchers("/api/user/create").permitAll()
+            .antMatchers("/api/user/defaultUser/**").permitAll()
             .antMatchers("/api/**").authenticated()
             .anyRequest().authenticated()
             .and()

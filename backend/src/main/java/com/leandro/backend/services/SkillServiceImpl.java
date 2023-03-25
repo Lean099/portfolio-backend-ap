@@ -32,8 +32,10 @@ public class SkillServiceImpl implements SkillService{
     }
 
     @Override
-    public List<Skill> getAllUserSkill(User idUser) {
-        return skillRepo.findAllByIdUser(idUser);
+    public List<Skill> getAllUserSkill(String idUser) {
+        User user = new User();
+        user.setId(idUser);
+        return skillRepo.findAllByIdUser(user);
     }
 
     @Override
@@ -47,7 +49,7 @@ public class SkillServiceImpl implements SkillService{
     }
 
     @Override
-    public String deleteAllUserSkill(User idUser) {
+    public String deleteAllUserSkill(String idUser) {
         skillRepo.deleteAll(getAllUserSkill(idUser));
         return "All deleted";
     }

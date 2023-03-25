@@ -6,12 +6,14 @@ import java.util.List;
 import com.leandro.backend.models.Address;
 import com.leandro.backend.models.Picture;
 import com.leandro.backend.models.User;
+import com.leandro.backend.utils.DefaultUser;
 
 public interface UserService {
     
     User saveUser(User user);
     User getUser(String id);
     List<User> getAll();
+    DefaultUser getDefaultDataUser(String idUser);
     void hasAProfilePicture(String idUser);
     void hasABannerPicture(String idUser);
     void updateFirstName(String id, String firstname);

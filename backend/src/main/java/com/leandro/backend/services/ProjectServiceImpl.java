@@ -32,8 +32,10 @@ public class ProjectServiceImpl implements ProjectService{
     }
 
     @Override
-    public List<Project> getAllUserProject(User idUser) {
-        return projectRepo.findAllByIdUser(idUser);
+    public List<Project> getAllUserProject(String idUser) {
+        User user = new User();
+        user.setId(idUser);
+        return projectRepo.findAllByIdUser(user);
     }
 
     @Override
@@ -47,7 +49,7 @@ public class ProjectServiceImpl implements ProjectService{
     }
 
     @Override
-    public String deleteAllUserProject(User idUser) {
+    public String deleteAllUserProject(String idUser) {
         projectRepo.deleteAll(getAllUserProject(idUser));
         return "All deleted";
     }

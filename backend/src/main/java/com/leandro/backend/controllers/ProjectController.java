@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.leandro.backend.models.Project;
-import com.leandro.backend.models.User;
 import com.leandro.backend.services.ProjectService;
 
 import lombok.RequiredArgsConstructor;
@@ -32,8 +31,8 @@ public class ProjectController {
         return projectService.getProject(idProject);
     }
 
-    @RequestMapping(value = "/project/all", method = RequestMethod.GET)
-    public List<Project> getAllProject(@RequestBody User idUser){ // Funciona
+    @RequestMapping(value = "/project/all/{idUser}", method = RequestMethod.GET)
+    public List<Project> getAllProject(@PathVariable String idUser){ // Funciona
         return projectService.getAllUserProject(idUser);
     }
 

@@ -9,6 +9,7 @@ public interface AddressService {
     
     Address saveAddress(String idUser, Address address);
     Address getAddress(String idAddress);
+    Address getAddressByIdUser(String idUser);
     void deleteAddress(String idAddress);
     void updateCountry(String id, Country country);
     void updateCity(String id, City city);

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.leandro.backend.models.User;
 import com.leandro.backend.models.Work;
 import com.leandro.backend.services.WorkService;
 
@@ -32,8 +31,8 @@ public class WorkController {
         return workService.getWork(idWork);
     }
 
-    @RequestMapping(value = "/work/all", method = RequestMethod.GET)
-    public List<Work> getAllWork(@RequestBody User idUser){ // Funciona
+    @RequestMapping(value = "/work/all/{idUser}", method = RequestMethod.GET)
+    public List<Work> getAllWork(@PathVariable String idUser){ // Funciona
         return workService.getAllUserWork(idUser);
     }
 

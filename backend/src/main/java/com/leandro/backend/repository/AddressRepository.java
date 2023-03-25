@@ -1,5 +1,7 @@
 package com.leandro.backend.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -34,5 +36,7 @@ public interface AddressRepository extends JpaRepository<Address, String>{
     @Query("update Address a set a.province = :province where a.id = :id")
     void updateProvince(@Param(value = "id") String id,
                         @Param(value = "province") Province province);
+
+    Optional<Address> findByIdUser(User idUser);
 
 }

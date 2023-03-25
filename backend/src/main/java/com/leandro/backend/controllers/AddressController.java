@@ -30,6 +30,11 @@ public class AddressController {
         return addressService.getAddress(idAddress);
     }
 
+    @RequestMapping(value = "/address/byUser/{idUser}", method = RequestMethod.GET)
+    public Address getAddressByIdUser(@PathVariable String idUser){      // Funciona
+        return addressService.getAddressByIdUser(idUser);
+    }
+
     @RequestMapping(value = "/address/update", method = RequestMethod.POST)
     public Address updateAddress(@RequestBody Address address){     // Funciona
         String id = address.getId();

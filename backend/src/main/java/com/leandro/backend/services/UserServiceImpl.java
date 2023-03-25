@@ -19,6 +19,7 @@ import com.leandro.backend.models.Picture;
 import com.leandro.backend.models.User;
 import com.leandro.backend.repository.UserRepository;
 import com.leandro.backend.security.PasswordConfig;
+import com.leandro.backend.utils.DefaultUser;
 
 import lombok.RequiredArgsConstructor;
 
@@ -33,6 +34,23 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     private PictureService pictureService;
     @Autowired
     private PasswordConfig passwordEncoder;
+
+    @Lazy
+    @Autowired
+    private WorkService workService;
+    @Lazy
+    @Autowired
+    private EducationService educationService;
+    @Lazy
+    @Autowired
+    private ProjectService projectService;
+    @Lazy
+    @Autowired
+    private SkillService skillService;
+    @Lazy
+    @Autowired
+    private AddressService addressService;
+    
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -59,6 +77,17 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public List<User> getAll() {
         return userRepo.findAll();
+    }
+
+    @Override
+    public DefaultUser getDefaultDataUser(String idUser) {  // Funciona
+        DefaultUser defaultUser = new DefaultUser();
+        defaultUser.setUserData(getUser(idUser));
+        defaultUser.setWork(workService.getAllUserWork(idUser));
+        defaultUser.setEducation(educationService.getAllUserEducation(idUser));
+        defaultUser.setProject(projectService.getAllUserProject(idUser));
+        defaultUser.setSkill(skillService.getAllUserSkill(idUser));
+        return defaultUser;
     }
 
     @Override

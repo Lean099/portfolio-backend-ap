@@ -40,8 +40,10 @@ public class EducationServiceImpl implements EducationService{
     }
 
     @Override
-    public List<Education> getAllUserEducation(User idUser) {
-        return educationRepo.findAllByIdUser(idUser);
+    public List<Education> getAllUserEducation(String idUser) {
+        User user = new User();
+        user.setId(idUser);
+        return educationRepo.findAllByIdUser(user);
     }
 
     @Override
@@ -55,7 +57,7 @@ public class EducationServiceImpl implements EducationService{
     }
 
     @Override
-    public String deleteAllUserEducation(User idUser) {
+    public String deleteAllUserEducation(String idUser) {
         educationRepo.deleteAll(getAllUserEducation(idUser));
         return "All deleted";
     }
