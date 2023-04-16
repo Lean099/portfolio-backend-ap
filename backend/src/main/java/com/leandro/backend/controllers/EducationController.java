@@ -1,8 +1,11 @@
 package com.leandro.backend.controllers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,8 +54,11 @@ public class EducationController {
     }
 
     @RequestMapping(value = "/education/delete/{idEducation}", method = RequestMethod.DELETE)
-    public String deleteEducation(@PathVariable String idEducation){ // Funciona
-        return educationService.deleteEducation(idEducation);
+    public ResponseEntity<Object> deleteEducation(@PathVariable String idEducation){ // Funciona
+        String message = educationService.deleteEducation(idEducation);
+        Map<String, Object> responseMap = new HashMap<>();
+        responseMap.put("message", "Resource with ID " + idEducation +  " " + message);
+        return ResponseEntity.ok().body(responseMap);
     }
     
 }

@@ -1,8 +1,11 @@
 package com.leandro.backend.controllers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,8 +51,11 @@ public class SkillController {
     }
 
     @RequestMapping(value = "/skill/delete/{idSkill}", method = RequestMethod.DELETE)
-    public String deleteSkill(@PathVariable String idSkill){ // Funciona
-        return skillService.deleteSkill(idSkill);
+    public ResponseEntity<Object> deleteSkill(@PathVariable String idSkill){ // Funciona
+        String message = skillService.deleteSkill(idSkill);
+        Map<String, Object> responseMap = new HashMap<>();
+        responseMap.put("message", "Resource with ID " + idSkill +  " " + message);
+        return ResponseEntity.ok().body(responseMap);
     }
 
 }

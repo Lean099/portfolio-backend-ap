@@ -1,8 +1,11 @@
 package com.leandro.backend.controllers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,8 +55,11 @@ public class WorkController {
     }
 
     @RequestMapping(value = "/work/delete/{idWork}", method = RequestMethod.DELETE) 
-    public String deleteWork(@PathVariable String idWork){ // Funciona
-        return workService.deleteWork(idWork);
+    public ResponseEntity<Object> deleteWork(@PathVariable String idWork){ // Funciona
+        String message = workService.deleteWork(idWork);
+        Map<String, Object> responseMap = new HashMap<>();
+        responseMap.put("message", "Resource with ID " + idWork +  " " + message);
+        return ResponseEntity.ok().body(responseMap);
     }
 
 }

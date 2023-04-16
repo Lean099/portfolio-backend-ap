@@ -1,8 +1,11 @@
 package com.leandro.backend.controllers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,8 +57,11 @@ public class ProjectController {
     }
 
     @RequestMapping(value = "/project/delete/{idProject}", method = RequestMethod.DELETE)
-    public String deleteProject(@PathVariable String idProject){ // Funciona
-        return projectService.deleteProject(idProject);
+    public ResponseEntity<Object> deleteProject(@PathVariable String idProject){ // Funciona
+        String message = projectService.deleteProject(idProject);
+        Map<String, Object> responseMap = new HashMap<>();
+        responseMap.put("message", "Resource with ID " + idProject +  " " + message);
+        return ResponseEntity.ok().body(responseMap);
     }
 
 }

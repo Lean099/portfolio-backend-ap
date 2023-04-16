@@ -136,12 +136,27 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public void updateAbout(String id, String about) {
-        userRepo.updateAbout(id, about);;
+        userRepo.updateAbout(id, about);
+    }
+
+    @Override
+    public void updatePhone(String id, String phone) {
+        userRepo.updatePhone(id, phone);
+    }
+
+    @Override
+    public void updateGithubUrl(String id, String githubUrl) {
+        userRepo.updateGithubUrl(id, githubUrl);
+    }
+
+    @Override
+    public void updateLinkedinUrl(String id, String linkedinUrl) {
+        userRepo.updateLinkedinUrl(id, linkedinUrl);
     }
 
     @Override
     public void updateDob(String id, Date dob) {
-        userRepo.updateDob(id, dob);;
+        userRepo.updateDob(id, dob);
     }
 
     @Override

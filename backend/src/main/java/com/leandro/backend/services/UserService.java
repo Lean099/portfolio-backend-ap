@@ -21,6 +21,9 @@ public interface UserService {
     void updateEmail(String id, String email);
     void updatePassword(String id, String password);
     void updateAbout(String id, String about);
+    void updatePhone(String id, String phone);
+    void updateGithubUrl(String id, String githubUrl);
+    void updateLinkedinUrl(String id, String linkedinUrl);
     void updateDob(String id, Date dob);
     void updateAddress(String idUser, Address idAddress);
     void updateIdProfilePicture(String idUser, Picture idPicture);

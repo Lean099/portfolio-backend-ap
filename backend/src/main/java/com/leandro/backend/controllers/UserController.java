@@ -38,7 +38,7 @@ public class UserController {
 
     @RequestMapping(value = "/user/updatePI", method = RequestMethod.POST)
     public User updatePersonalInformation(@RequestBody User pi){ // Funciona
-        // Firstname, lastname, dob, about
+        // Firstname, lastname, dob, about, phone, github, linkedin
         String id = pi.getId();
         if(!Objects.isNull(pi.getFirstname())){
             userService.updateFirstName(id, pi.getFirstname());
@@ -51,6 +51,15 @@ public class UserController {
         }
         if(!Objects.isNull(pi.getAbout())){
             userService.updateAbout(id, pi.getAbout());
+        }
+        if(!Objects.isNull(pi.getPhone())){
+            userService.updatePhone(id, pi.getPhone());
+        }
+        if(!Objects.isNull(pi.getGithubUrl())){
+            userService.updateGithubUrl(id, pi.getGithubUrl());
+        }
+        if(!Objects.isNull(pi.getLinkedinUrl())){
+            userService.updateLinkedinUrl(id, pi.getLinkedinUrl());
         }
         return userService.getUser(id);
     }

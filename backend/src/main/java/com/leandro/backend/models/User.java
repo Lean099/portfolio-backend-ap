@@ -36,6 +36,9 @@ public class User {
     private String email;
     private String password;
     private String about;
+    private String phone;
+    private String githubUrl;
+    private String linkedinUrl;
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date dob;
     @OneToOne
