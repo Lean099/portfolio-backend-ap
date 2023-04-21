@@ -1,10 +1,13 @@
 package com.leandro.backend.controllers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.xml.bind.ValidationException;
 
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +31,7 @@ public class PictureController {
 
     // Funciona
     @RequestMapping(value = "/picture/upload/{idUser}/{type}", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public String uploadPicture(@PathVariable String idUser,
+    public ResponseEntity<Object> uploadPicture(@PathVariable String idUser,
                                  @PathVariable String type,
                                  @RequestParam("file") MultipartFile file,
                                  @RequestParam(required = false, value = "idEntity") String idEntity) throws ValidationException{
@@ -41,7 +44,10 @@ public class PictureController {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            return pictureUrl;
+            Map<String, Object> responseMap = new HashMap<>();
+            responseMap.put("message", "Image uploaded successfully");
+            responseMap.put("url", pictureUrl);
+            return ResponseEntity.ok().body(responseMap);
         //}else{
             //throw new ValidationException("The file was not chosen in the form-data, the file has no content, or another problem occurred.");
         //}
