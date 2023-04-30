@@ -47,6 +47,9 @@ public class ProjectController {
         if(!Objects.isNull(project.getDescription())){
             projectService.updateDescription(idProject, project.getDescription());
         }
+        if(!Objects.isNull(project.getEnddate())){
+            projectService.updateEnddate(idProject, project.getEnddate());
+        }
         if(!Objects.isNull(project.getLinkGithub())){
             projectService.updateLinkGithub(idProject, project.getLinkGithub());
         }

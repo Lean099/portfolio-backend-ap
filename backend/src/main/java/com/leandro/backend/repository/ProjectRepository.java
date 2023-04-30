@@ -1,5 +1,6 @@
 package com.leandro.backend.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -28,6 +29,11 @@ public interface ProjectRepository extends JpaRepository<Project, String>{
     @Query("update Project p set p.description = :description where p.id = :id")
     void updateDescription(@Param(value = "id") String id,
                            @Param(value = "description") String description);
+
+    @Modifying
+    @Query("update Project p set p.enddate = :enddate where p.id = :id")
+    void updateEnddate(@Param(value = "id") String id,
+                       @Param(value = "enddate") Date enddate);
 
     @Modifying
     @Query("update Project p set p.linkGithub = :linkGithub where p.id = :id")

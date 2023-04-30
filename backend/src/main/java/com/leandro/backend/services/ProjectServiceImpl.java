@@ -1,5 +1,6 @@
 package com.leandro.backend.services;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -67,6 +68,11 @@ public class ProjectServiceImpl implements ProjectService{
     @Override
     public void updateDescription(String id, String description) {
         projectRepo.updateDescription(id, description);
+    }
+
+    @Override
+    public void updateEnddate(String id, Date enddate) {
+        projectRepo.updateEnddate(id, enddate);
     }
 
     @Override

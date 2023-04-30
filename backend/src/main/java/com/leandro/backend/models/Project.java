@@ -1,5 +1,7 @@
 package com.leandro.backend.models;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +12,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -33,6 +36,8 @@ public class Project {
     private User idUser;
     private String name;
     private String description;
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private Date enddate;
     private String linkGithub;
     private String linkProject;
 
