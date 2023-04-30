@@ -1,5 +1,6 @@
 package com.leandro.backend.services;
 
+import java.util.Date;
 import java.util.List;
 
 import com.leandro.backend.models.Project;
@@ -14,6 +15,7 @@ public interface ProjectService {
     void updateIdUser(String id, String idUser);
     void updateName(String id, String name);
     void updateDescription(String id, String description);
+    void updateEnddate(String id, Date enddate);
     void updateLinkGithub(String id, String linkGithub);
     void updateLinkProject(String id, String linkProject);
 

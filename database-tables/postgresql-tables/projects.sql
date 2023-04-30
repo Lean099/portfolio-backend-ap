@@ -3,6 +3,7 @@ CREATE TABLE public.projects (
 	id_user bpchar(36) NOT NULL,
 	"name" varchar(100) NULL,
 	description text NULL,
+	enddate date NULL,
 	link_github varchar(500) NULL,
 	link_project varchar(500) NULL,
 	CONSTRAINT projects_pk PRIMARY KEY (id),
