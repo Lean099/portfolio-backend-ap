@@ -5,7 +5,6 @@ com\leandro\backend\services\UserService.class
 com\leandro\backend\repository\ProvinceRepository.class
 com\leandro\backend\services\ProvinceService.class
 com\leandro\backend\services\SkillService.class
-com\leandro\backend\utils\StartupComponent.class
 com\leandro\backend\services\SkillServiceImpl.class
 com\leandro\backend\models\Project.class
 com\leandro\backend\repository\EducationRepository.class
