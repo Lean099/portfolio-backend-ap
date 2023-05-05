@@ -9,14 +9,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class StartupComponent implements ApplicationRunner {
     
-    @Autowired
-    private CloudinaryConfig cloudinaryConfig;
+    //@Autowired
+    //private CloudinaryConfig cloudinaryConfig;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        if(cloudinaryConfig.notExistsDir()){
+        /*if(cloudinaryConfig.notExistsDir()){
             cloudinaryConfig.createDirUpload();
-        }
+        }*/
     }
 
 }
