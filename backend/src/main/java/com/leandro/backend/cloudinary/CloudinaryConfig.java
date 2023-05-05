@@ -76,6 +76,7 @@ public class CloudinaryConfig {
             String pathFolder = new FileSystemResource("").getFile().getAbsolutePath() + "/src/main/resources/uploads/";
             List<Path> filePathList = Files.walk(Paths.get(pathFolder))
                     .filter(Files::isRegularFile)
+                    .filter(path -> !path.endsWith(".gitignore"))
                     .map(Path::toAbsolutePath)
                     .collect(Collectors.toList());
             filePathList.forEach(e -> {
