@@ -66,6 +66,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public User saveUser(User user) {
         user.setPassword(passwordEncoder.passwordEncoder().encode(user.getPassword()));
+        User userSaved = userRepo.saveAndFlush(user);
+        addressService.saveAddress(userSaved.getId(), new Address());
         return userRepo.save(user);
     }
 
